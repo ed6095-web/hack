@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindLoop • Learn</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <!-- Background -->
+    <div class="particle-canvas" id="particle-canvas"></div>
+    <canvas id="neural-bg" class="neural-background"></canvas>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar neo-glass" id="sidebar">
+            <div class="sidebar-glow"></div>
+            
+            <div class="sidebar-header">
+                <div class="logo-container hover-float">
+                    <div class="logo-icon">
+                        <i class="fas fa-brain"></i>
+                        <div class="icon-particles"></div>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-main gradient-text">MindLoop</span>
+                        <span class="logo-sub">AI Powered</span>
+                    </div>
+                </div>
+                
+                <div class="ai-status-indicator">
+                    <div class="ai-dot pulsing"></div>
+                    <span class="ai-status-text">AI Online</span>
+                </div>
+            </div>
+            
+            <div class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-home nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="learn.html" class="nav-link active magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-rocket nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Learn</span>
+                            <div class="nav-badge ai-badge">AI</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="explorer.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-compass nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Explorer</span>
+                            <div class="nav-progress">
+                                <div class="progress-ring">
+                                    <svg><circle cx="10" cy="10" r="8"></circle></svg>
+                                </div>
+                                <span class="progress-text">8/12</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="challenger.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-bolt nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Challenger</span>
+                            <div class="nav-badge energy">⚡</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="masters.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-crown nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Masters</span>
+                            <div class="nav-badge locked">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="progress.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-chart-line nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Progress</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="achievements.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-trophy nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Achievements</span>
+                            <div class="nav-badge new-glow">3</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-cog nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="streak-widget neo-glass hover-float">
+                <div class="streak-fire">🔥</div>
+                <div class="streak-info">
+                    <div class="streak-number">7</div>
+                    <div class="streak-text">Day Streak</div>
+                </div>
+                <div class="streak-progress-ring">
+                    <svg>
+                        <circle cx="20" cy="20" r="18"></circle>
+                        <circle cx="20" cy="20" r="18" class="progress" style="--progress: 46%"></circle>
+                    </svg>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header neo-glass floating-header">
+                <button class="mobile-toggle futuristic-btn" id="mobile-toggle">
+                    <div class="toggle-lines">
+                        <span></span><span></span><span></span>
+                    </div>
+                </button>
+                
+                <div class="header-content">
+                    <div class="header-left">
+                        <h1 class="page-title holographic-text">Learn</h1>
+                        <p class="page-subtitle">Transform documents into interactive experiences 🤖</p>
+                    </div>
+                    
+                    <div class="header-right">
+                        <div class="stats-mini">
+                            <div class="mini-stat">
+                                <i class="fas fa-file-alt"></i>
+                                <span>5 Docs</span>
+                            </div>
+                            <div class="mini-stat">
+                                <i class="fas fa-brain"></i>
+                                <span>127 AI Questions</span>
+                            </div>
+                        </div>
+                        
+                        <div class="user-profile hover-lift">
+                            <div class="profile-avatar">
+                                <i class="fas fa-user"></i>
+                                <div class="online-indicator"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Learn Content -->
+            <div class="content-area">
+                <!-- Hero Section -->
+                <section class="learn-hero">
+                    <div class="hero-content">
+                        <h2 class="hero-title gradient-text">AI-Powered Document Learning</h2>
+                        <p class="hero-subtitle">Upload any document and watch our AI transform it into personalized, interactive learning experiences tailored just for you.</p>
+                        
+                        <div class="hero-stats">
+                            <div class="hero-stat">
+                                <div class="stat-number">98%</div>
+                                <div class="stat-label">Accuracy</div>
+                            </div>
+                            <div class="hero-stat">
+                                <div class="stat-number">2.3s</div>
+                                <div class="stat-label">Processing Time</div>
+                            </div>
+                            <div class="hero-stat">
+                                <div class="stat-number">50+</div>
+                                <div class="stat-label">Question Types</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- AI Upload Section -->
+                <section class="ai-upload-section">
+                    <div class="section-header">
+                        <h2 class="section-title">📤 Upload Your Documents</h2>
+                        <p class="section-subtitle">Drag and drop your files or click to browse</p>
+                    </div>
+                    
+                    <div class="upload-container neo-glass hover-lift">
+                        <div class="upload-bg-effect"></div>
+                        
+                        <form id="learn-upload-form" class="upload-form">
+                            <div class="upload-zone" id="learn-upload-zone">
+                                <input type="file" id="learn-file-input" accept=".pdf,.docx,.txt,.pptx" multiple hidden>
+                                
+                                <div class="upload-visual">
+                                    <div class="upload-icon large">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <div class="upload-particles"></div>
+                                    </div>
+                                    
+                                    <div class="upload-text">
+                                        <h3>Choose files to upload</h3>
+                                        <p>or drag and drop them here</p>
+                                        <div class="supported-formats">
+                                            <span class="format-tag">PDF</span>
+                                            <span class="format-tag">DOCX</span>
+                                            <span class="format-tag">TXT</span>
+                                            <span class="format-tag">PPTX</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="upload-progress" id="learn-upload-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill"></div>
+                                    </div>
+                                    <div class="progress-text">Processing with AI...</div>
+                                </div>
+                            </div>
+                            
+                            <div class="file-preview" id="file-preview"></div>
+                            
+                            <div class="upload-actions">
+                                <button type="submit" class="ai-process-btn futuristic-btn">
+                                    <i class="fas fa-rocket"></i>
+                                    <span>Start AI Processing</span>
+                                    <div class="btn-energy"></div>
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <div class="upload-status" id="learn-upload-status"></div>
+                    </div>
+                </section>
+
+                <!-- Features Grid -->
+                <section class="features-section">
+                    <div class="section-header">
+                        <h2 class="section-title">✨ What Our AI Can Do</h2>
+                        <p class="section-subtitle">Discover the power of AI-driven learning</p>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card neo-glass hover-lift" data-tilt>
+                            <div class="feature-icon">🧠</div>
+                            <h4>Smart Content Analysis</h4>
+                            <p>AI analyzes your documents to identify key concepts, important terms, and learning objectives automatically.</p>
+                            <div class="feature-example">
+                                <small>📝 Example: Extracts 25+ key terms from a 20-page PDF</small>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card neo-glass hover-lift" data-tilt>
+                            <div class="feature-icon">🎯</div>
+                            <h4>Multi-Level Question Generation</h4>
+                            <p>Creates questions across different difficulty levels - from basic recall to advanced application scenarios.</p>
+                            <div class="feature-example">
+                                <small>📊 Example: Generates 50+ questions across 3 difficulty levels</small>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card neo-glass hover-lift" data-tilt>
+                            <div class="feature-icon">🎮</div>
+                            <h4>Gamified Learning Paths</h4>
+                            <p>Transforms your documents into engaging, game-like learning experiences with levels and achievements.</p>
+                            <div class="feature-example">
+                                <small>🏆 Example: Creates 4-6 unlockable levels per document</small>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card neo-glass hover-lift" data-tilt>
+                            <div class="feature-icon">📈</div>
+                            <h4>Progress Tracking</h4>
+                            <p>Monitors your learning progress with detailed analytics and personalized recommendations.</p>
+                            <div class="feature-example">
+                                <small>📊 Example: Tracks accuracy, speed, and knowledge gaps</small>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card neo-glass hover-lift" data-tilt>
+                            <div class="feature-icon">🤖</div>
+                            <h4>AI-Powered Insights</h4>
+                            <p>Get intelligent recommendations on what to study next based on your performance patterns.</p>
+                            <div class="feature-example">
+                                <small>💡 Example: "Focus on Chapter 3 concepts for better understanding"</small>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card neo-glass hover-lift" data-tilt>
+                            <div class="feature-icon">⚡</div>
+                            <h4>Instant Processing</h4>
+                            <p>Lightning-fast document analysis with results available in seconds, not minutes.</p>
+                            <div class="feature-example">
+                                <small>⏱️ Example: 100-page document processed in under 3 seconds</small>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- How It Works -->
+                <section class="how-it-works">
+                    <div class="section-header">
+                        <h2 class="section-title">🎬

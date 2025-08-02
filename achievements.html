@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindLoop • Achievements</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme achievements-theme">
+    <!-- Background -->
+    <div class="particle-canvas" id="particle-canvas"></div>
+    <canvas id="neural-bg" class="neural-background"></canvas>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar neo-glass" id="sidebar">
+            <div class="sidebar-glow achievements"></div>
+            
+            <div class="sidebar-header">
+                <div class="logo-container hover-float">
+                    <div class="logo-icon">
+                        <i class="fas fa-brain"></i>
+                        <div class="icon-particles"></div>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-main gradient-text">MindLoop</span>
+                        <span class="logo-sub">AI Powered</span>
+                    </div>
+                </div>
+                
+                <div class="ai-status-indicator">
+                    <div class="ai-dot pulsing"></div>
+                    <span class="ai-status-text">AI Online</span>
+                </div>
+            </div>
+            
+            <div class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-home nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="learn.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-rocket nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Learn</span>
+                            <div class="nav-badge ai-badge">AI</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="explorer.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-compass nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Explorer</span>
+                            <div class="nav-badge completed">✓</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="challenger.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-bolt nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Challenger</span>
+                            <div class="nav-badge energy">⚡</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="masters.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-crown nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Masters</span>
+                            <div class="nav-badge masters">👑</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="progress.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-chart-line nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Progress</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="achievements.html" class="nav-link active magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-trophy nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Achievements</span>
+                            <div class="nav-badge new-glow">5</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-cog nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="streak-widget neo-glass hover-float">
+                <div class="streak-fire">🔥</div>
+                <div class="streak-info">
+                    <div class="streak-number">7</div>
+                    <div class="streak-text">Day Streak</div>
+                </div>
+                <div class="streak-progress-ring">
+                    <svg>
+                        <circle cx="20" cy="20" r="18"></circle>
+                        <circle cx="20" cy="20" r="18" class="progress" style="--progress: 46%"></circle>
+                    </svg>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header neo-glass floating-header">
+                <button class="mobile-toggle futuristic-btn" id="mobile-toggle">
+                    <div class="toggle-lines">
+                        <span></span><span></span><span></span>
+                    </div>
+                </button>
+                
+                <div class="header-content">
+                    <div class="header-left">
+                        <h1 class="page-title holographic-text">Achievements</h1>
+                        <p class="page-subtitle">Celebrate your learning milestones and victories 🏆</p>
+                    </div>
+                    
+                    <div class="header-right">
+                        <div class="achievement-summary">
+                            <div class="summary-stat">
+                                <span class="stat-value">12</span>
+                                <span class="stat-label">Earned</span>
+                            </div>
+                            <div class="summary-stat">
+                                <span class="stat-value">18</span>
+                                <span class="stat-label">Total</span>
+                            </div>
+                            <div class="summary-stat">
+                                <span class="stat-value">67%</span>
+                                <span class="stat-label">Complete</span>
+                            </div>
+                        </div>
+                        
+                        <div class="user-profile hover-lift">
+                            <div class="profile-avatar">
+                                <i class="fas fa-user"></i>
+                                <div class="online-indicator"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Achievements Content -->
+            <div class="content-area">
+                <!-- Recent Achievements -->
+                <section class="recent-achievements">
+                    <div class="section-header">
+                        <h2 class="section-title">🎉 Recently Earned</h2>
+                        <div class="new-badge pulsing">3 New!</div>
+                    </div>
+                    
+                    <div class="recent-grid">
+                        <div class="achievement-card recent earned neo-glass hover-lift celebration" data-tilt>
+                            <div class="achievement-bg"></div>
+                            <div class="achievement-glow"></div>
+                            <div class="celebration-confetti">
+                                <div class="confetti" style="--delay: 0s;"></div>
+                                <div class="confetti" style="--delay: 0.2s;"></div>
+                                <div class="confetti" style="--delay: 0.4s;"></div>
+                                <div class="confetti" style="--delay: 0.6s;"></div>
+                            </div>
+                            <div class="achievement-icon legendary">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h3>Explorer Master</h3>
+                                <p>Complete all Explorer levels with excellence</p>
+                                <div class="achievement-reward">
+                                    <i class="fas fa-star"></i>
+                                    <span>+500 XP Bonus</span>
+                                </div>
+                                <div class="achievement-date">Earned 2 hours ago</div>
+                            </div>
+                            <div class="achievement-rarity legendary">Legendary</div>
+                        </div>
+
+                        <div class="achievement-card recent earned neo-glass hover-lift" data-tilt>
+                            <div class="achievement-bg"></div>
+                            <div class="achievement-glow"></div>
+                            <div class="achievement-icon epic">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h3>Week Warrior</h3>
+                                <p>Maintain a 7-day learning streak</p>
+                                <div class="achievement-reward">
+                                    <i class="fas fa-star"></i>
+                                    <span>+200 XP</span>
+                                </div>
+                                <div class="achievement-date">Earned yesterday</div>
+                            </div>
+                            <div class="achievement-rarity epic">Epic</div>
+                        </div>
+
+                        <div class="achievement-card recent earned neo-glass hover-lift" data-tilt>
+                            <div class="achievement-bg"></div>
+                            <div class="achievement-glow"></div>
+                            <div class="achievement-icon rare">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h3>AI Whisperer</h3>
+                                <p>Process 5 documents with AI successfully</p>
+                                <div class="achievement-reward">
+                                    <i class="fas fa-star"></i>
+                                    <span>+150 XP</span>
+                                </div>
+                                <div class="achievement-date">Earned 3 days ago</div>
+                            </div>
+                            <div class="achievement-rarity rare">Rare</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Achievement Categories -->
+                <section class="achievement-categories">
+                    <div class="category-tabs">
+                        <button class="category-tab active">All</button>
+                        <button class="category-tab">Learning</button>
+                        <button class="category-tab">Streaks</button>
+                        <button class="category-tab">AI</button>
+                        <button class="category-tab">Speed</button>
+                        <button class="category-tab">Perfect</button>
+                    </div>
+                    
+                    <div class="achievements-grid">
+                        <!-- Learning Achievements -->
+                        <div class="achievement-card earned neo-glass hover-lift" data-tilt data-category="learning">
+                            <div class="achievement-bg"></div>
+                            <div class="achievement-icon common">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h3>First Steps</h3>
+                                <p>Complete your first learning level</p>
+                                <div class="achievement-progress completed">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 100%"></div>
+                                    </div>
+                                    <span class="progress-text">1/1 Complete</span>
+                                </div>
+                                <div class="achievement-reward">
+                                    <i class="fas fa-star"></i>
+                                    <span>+50 XP</span>
+                                </div>
+                            </div>
+                            <div class="achievement-rarity common">Common</div>
+                            <div class="achievement-checkmark">✓</div>
+                        </div>
+
+                        <div class="achievement-card earned neo-glass hover-lift" data-tilt data-category="learning">
+                            <div class="achievement-bg"></div>
+                            <div class="achievement-icon uncommon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h3>Quick Learner</h3>
+                                <p>Complete 10 levels in your first week</p>
+                                <div class="achievement-progress completed">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 100%"></div>
+                                    </div>
+                                    <span class="progress-text">10/10 Complete</span>
+                                </div>
+                                <div class="achievement-reward">
+                                    <i class="fas fa-star"></i>
+                                    <span>+100 XP</span>
+                                </div>
+                            </div>
+                            <div class="achievement-rarity uncommon">Uncommon</div>
+                            <div class="achievement-checkmark">✓</div>
+                        </div>
+
+                        <div class="achievement-card in-progress neo-glass hover-lift" data-tilt data-category="learning">
+                            <div class="achievement-bg"></div>
+                            <div class="achievement-icon rare">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h3>Challenger Awaits</h3>
+                                <p>Complete your first Challenger level</p>
+                                <div class="achievement-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 0%"></div>
+                                    </div>
+                                    <span class="progress-text">0/1 Complete</span>
+                                </div>
+                                <div class="achievement-reward">
+                                    <i class="fas fa-star"></i>
+                                    <span>+250 XP</span>
+                                </div>
+                            </div>
+                            <div class="achievement-rarity rare">Rare</div>
+                        </div>
+
+                        <!-- Streak Achievements -->
+                        <div class="achievement-card earned neo-glass hover-lift" data-tilt data-category="streaks">
+                            <div class="achievement-bg"></div>
+                            <div class="achievement-icon uncommon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h3>Consistency</h3>
+                                <p>Maintain a 3-day learning streak</p>
+                                <div class="achievement-progress completed">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 100%"></div>
+                                    </div>
+                                    <span class="progress-text">3/3 Days</span>
+                                </div>
+                                <div class="achievement-reward">
+                                    <i class="fas fa-star"></i>
+                                    <span>+75 XP</span>
+                                </div>
+                            </div>
+                            <div class="achievement-rarity uncommon">Uncommon</div>
+                            <div class="achievement-checkmark">✓</div>
+                        </div>
+
+                        <div class="achievement-card in-progress neo-glass hover-lift" data-tilt data-category="streaks">
+                            <div class="achievement-bg"></div>
+                            <div class="achievement-icon legendary">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h3>Unstoppable</h3>
+                                <p>Achieve a 30-day learning streak</p>
+                                <div class="achievement-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 23%"></div>
+                                    </div>
+                                    <span class="progress-text">7/30 Days</span>
+                                </div>
+                                <div class="achievement-reward">
+                                    <i class="fas fa-star"></i>
+                                    <span>+1000 XP</span>
+                                </div>
+                            </div>
+                            <div class="achievement-rarity legendary">Legendary</div>
+                        </div>
+
+                        <!-- AI Achievements -->
+                        <div class="achievement-card earned neo-glass hover-lift" data-tilt data-category="ai">
+                            <div class="achievement-bg"></div>
+                            <div class="achievement-icon rare">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h3>AI Pioneer</h3>
+                                <p>Upload your first document for AI processing</p>
+                                <div class="achievement-progress completed">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 100%"></div>
+                                    </div>
+                                    <span class="progress-text">1/1 Document</span>
+                                </div>
+                                <div class="achievement-reward">
+                                    <i class="fas fa-star"></i>
+                                    <span>+100 XP</span>
+                                </div>
+                            </div>
+                            <div class="achievement-rarity rare">Rare</div>
+                            <div class="achievement-checkmark">✓</div>
+                        </div>
+
+                        <!-- Speed Achievements -->
+                        <div class="achievement-card locked neo-glass" data-category="speed">
+                            <div class="achievement-bg locked"></div>
+                            <div class="achievement-icon locked">
+                                <i class="fas fa-stopwatch"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h3>Speed Demon</h3>
+                                <p>Complete a level in under 5 minutes</p>
+                                <div class="unlock-requirement">
+                                    <i class="fas fa-lock"></i>
+                                    <span>Unlock Challenger levels first</span>
+                                </div>
+                                <div class="achievement-reward">
+                                    <i class="fas fa-star"></i>
+                                    <span>+300 XP</span>
+                                </div>
+                            </div>
+                            <div class="achievement-rarity epic">Epic</div>
+                        </div>
+
+                        <!-- Perfect Score Achievements -->
+                        <div class="achievement-card earned neo-glass hover-lift" data-tilt data-category="perfect">
+                            <div class="achievement-bg"></div>
+                            <div class="achievement-icon epic">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h3>Perfectionist</h3>
+                                <p>Achieve a perfect score on any level</p>
+                                <div class="achievement-progress completed">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 100%"></div>
+                                    </div>
+                                    <span class="progress-text">1/1 Perfect Score</span>
+                                </div>
+                                <div class="achievement-reward">
+                                    <i class="fas fa-star"></i>
+                                    <span>+200 XP</span>
+                                </div>
+                            </div>
+                            <div class="achievement-rarity epic">Epic</div>
+                            <div class="achievement-checkmark">✓</div>
+                        </div>
+
+                        <!-- Hidden/Mystery Achievement -->
+                        <div class="achievement-card mystery neo-glass hover-lift" data-tilt>
+                            <div class="achievement-bg mystery"></div>
+                            <div class="achievement-icon mystery">
+                                <i class="fas fa-question"></i>
+                            </div>
+                            <div class="achievement-content">
+                                <h3>???</h3>
+                                <p>Keep exploring to unlock this mystery achievement</p>
+                                <div class="mystery-hint">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <span>Hint: Something special happens at midnight...</span>
+                                </div>
+                                <div class="achievement-reward">
+                                    <i class="fas fa-star"></i>
+                                    <span>??? XP</span>
+                                </div>
+                            </div>
+                            <div class="achievement-rarity mystery">Mystery</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Achievement Statistics -->
+                <section class="achievement-stats">
+                    <div class="section-header">
+                        <h2 class="section-title">📊 Achievement Statistics</h2>
+                    </div>
+                    
+                    <div class="stats-dashboard">
+                        <div class="stats-card neo-glass hover-lift">
+                            <div class="stats-header">
+                                <h3>Rarity Breakdown</h3>
+                            </div>
+                            <div class="rarity-stats">
+                                <div class="rarity-item">
+                                    <div class="rarity-color common"></div>
+                                    <span class="rarity-name">Common</span>
+                                    <span class="rarity-count">4/5</span>
+                                </div>
+                                <div class="rarity-item">
+                                    <div class="rarity-color uncommon"></div>
+                                    <span class="rarity-name">Uncommon</span>
+                                    <span class="rarity-count">3/4</span>
+                                </div>
+                                <div class="rarity-item">
+                                    <div class="rarity-color rare"></div>
+                                    <span class="rarity-name">Rare</span>
+                                    <span class="rarity-count">2/5</span>
+                                </div>
+                                <div class="rarity-item">
+                                    <div class="rarity-color epic"></div>
+                                    <span class="rarity-name">Epic</span>
+                                    <span class="rarity-count">2/3</span>
+                                </div>
+                                <div class="rarity-item">
+                                    <div class="rarity-color legendary"></div>
+                                    <span class="rarity-name">Legendary</span>
+                                    <span class="rarity-count">1/1</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stats-card neo-glass hover-lift">
+                            <div class="stats-header">
+                                <h3>Completion Progress</h3>
+                            </div>
+                            <div class="completion-visual">
+                                <div class="progress-circle">
+                                    <svg>
+                                        <circle cx="50" cy="50" r="45"></circle>
+                                        <circle cx="50" cy="50" r="45" class="progress" style="--progress: 67%"></circle>
+                                    </svg>
+                                    <div class="progress-text">
+                                        <span class="percentage">67%</span>
+                                        <span class="label">Complete</span>
+                                    </div>
+                                </div>
+                                <div class="completion-details">
+                                    <div class="detail-item">
+                                        <span class="detail-label">Earned:</span>
+                                        <span class="detail-value">12</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Remaining:</span>
+                                        <span class="detail-value">6</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Total XP:</span>
+                                        <span class="detail-value">2,450</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stats-card neo-glass hover-lift">
+                            <div class="stats-header">
+                                <h3>Recent Activity</h3>
+                            </div>
+                            <div class="activity-timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-dot legendary"></div>
+                                    <div class="timeline-content">
+                                        <span class="timeline-achievement">Explorer Master</span>
+                                        <span class="timeline-time">2 hours ago</span>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-dot epic"></div>
+                                    <div class="timeline-content">
+                                        <span class="timeline-achievement">Week Warrior</span>
+                                        <span class="timeline-time">1 day ago</span>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-dot rare"></div>
+                                    <div class="timeline-content">
+                                        <span class="timeline-achievement">AI Whisperer</span>
+                                        <span class="timeline-time">3 days ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Achievement Popup -->
+    <div class="achievement-popup" id="achievement-popup">
+        <div class="popup-content">
+            <div class="popup-celebration">
+                <div class="celebration-burst"></div>
+                <div class="popup-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+            </div>
+            <div class="popup-text">
+                <h3>Achievement Unlocked!</h3>
+                <p id="popup-achievement-name">Explorer Master</p>
+                <span id="popup-achievement-reward">+500 XP</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="particles.js"></script>
+    <script src="physics.js"></script>
+    <script src="ai-processor.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

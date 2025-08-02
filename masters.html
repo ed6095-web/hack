@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindLoop • Masters Arena</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme masters-theme">
+    <!-- Background -->
+    <div class="particle-canvas" id="particle-canvas"></div>
+    <canvas id="neural-bg" class="neural-background"></canvas>
+
+    <div class="app-container">
+        <!-- Sidebar (same as before) -->
+        <nav class="sidebar neo-glass" id="sidebar">
+            <div class="sidebar-glow masters"></div>
+            
+            <div class="sidebar-header">
+                <div class="logo-container hover-float">
+                    <div class="logo-icon masters">
+                        <i class="fas fa-brain"></i>
+                        <div class="icon-particles masters"></div>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-main gradient-text masters">MindLoop</span>
+                        <span class="logo-sub">AI Powered</span>
+                    </div>
+                </div>
+                
+                <div class="ai-status-indicator">
+                    <div class="ai-dot pulsing"></div>
+                    <span class="ai-status-text">AI Online</span>
+                </div>
+            </div>
+            
+            <div class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-home nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="learn.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-rocket nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Learn</span>
+                            <div class="nav-badge ai-badge">AI</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="explorer.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-compass nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Explorer</span>
+                            <div class="nav-badge completed">✓</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="challenger.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-bolt nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Challenger</span>
+                            <div class="nav-badge completed">✓</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="masters.html" class="nav-link active magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-crown nav-icon"></i>
+                                <div class="icon-orb masters"></div>
+                            </div>
+                            <span class="nav-text">Masters</span>
+                            <div class="nav-badge masters">👑</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="progress.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-chart-line nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Progress</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="achievements.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-trophy nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Achievements</span>
+                            <div class="nav-badge new-glow">5</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-cog nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="streak-widget neo-glass hover-float masters">
+                <div class="streak-fire">🔥</div>
+                <div class="streak-info">
+                    <div class="streak-number">7</div>
+                    <div class="streak-text">Day Streak</div>
+                </div>
+                <div class="streak-progress-ring">
+                    <svg>
+                        <circle cx="20" cy="20" r="18"></circle>
+                        <circle cx="20" cy="20" r="18" class="progress" style="--progress: 46%"></circle>
+                    </svg>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header neo-glass floating-header masters">
+                <button class="mobile-toggle futuristic-btn" id="mobile-toggle">
+                    <div class="toggle-lines">
+                        <span></span><span></span><span></span>
+                    </div>
+                </button>
+                
+                <div class="header-content">
+                    <div class="header-left">
+                        <h1 class="page-title holographic-text masters">Masters Arena</h1>
+                        <p class="page-subtitle">Elite challenges for true learning masters 👑</p>
+                    </div>
+                    
+                    <div class="header-right">
+                        <div class="level-badge masters">Expert Level</div>
+                        
+                        <div class="user-profile hover-lift">
+                            <div class="profile-avatar masters">
+                                <i class="fas fa-crown"></i>
+                                <div class="online-indicator"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Masters Content -->
+            <div class="content-area">
+                <!-- Welcome Card -->
+                <section class="masters-welcome-section">
+                    <div class="welcome-card masters neo-glass hover-lift magnetic-card" data-tilt>
+                        <div class="welcome-bg-gradient"></div>
+                        <div class="crown-float">
+                            <i class="fas fa-crown"></i>
+                            <div class="crown-sparkles">
+                                <div class="sparkle" style="--delay: 0s;"></div>
+                                <div class="sparkle" style="--delay: 0.5s;"></div>
+                                <div class="sparkle" style="--delay: 1s;"></div>
+                            </div>
+                        </div>
+                        <div class="welcome-content">
+                            <h2 class="welcome-title">🎉 Welcome to Masters Arena</h2>
+                            <p class="welcome-desc">You've reached the pinnacle! Only 3% of learners make it here.</p>
+                            <div class="unlock-achievements">
+                                <div class="achievement-mini">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Explorer Complete</span>
+                                </div>
+                                <div class="achievement-mini">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Challenger Victory</span>
+                                </div>
+                                <div class="achievement-mini">
+                                    <i class="fas fa-star"></i>
+                                    <span>87% Average</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Masters Stats Cards -->
+                <section class="masters-stats-section">
+                    <div class="stats-grid-masters">
+                        <div class="master-stat-card neo-glass hover-lift" data-tilt>
+                            <div class="stat-bg-effect masters"></div>
+                            <div class="stat-icon-container">
+                                <div class="stat-icon masters">🏆</div>
+                                <div class="icon-pulse masters"></div>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number gradient-text">Elite</div>
+                                <div class="stat-label">Your Rank</div>
+                                <div class="stat-sublabel">Top 3% Globally</div>
+                            </div>
+                        </div>
+
+                        <div class="master-stat-card neo-glass hover-lift" data-tilt>
+                            <div class="stat-bg-effect masters"></div>
+                            <div class="stat-icon-container">
+                                <div class="stat-icon masters">⚡</div>
+                                <div class="icon-pulse masters"></div>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number counter" data-target="2850">0</div>
+                                <div class="stat-label">Total XP</div>
+                                <div class="stat-sublabel">+500 Masters Bonus</div>
+                            </div>
+                        </div>
+
+                        <div class="master-stat-card neo-glass hover-lift" data-tilt>
+                            <div class="stat-bg-effect masters"></div>
+                            <div class="stat-icon-container">
+                                <div class="stat-icon masters">🧠</div>
+                                <div class="icon-pulse masters"></div>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number counter" data-target="187">0</div>
+                                <div class="stat-label">Questions Mastered</div>
+                                <div class="stat-sublabel">Perfect Accuracy</div>
+                            </div>
+                        </div>
+
+                        <div class="master-stat-card neo-glass hover-lift" data-tilt>
+                            <div class="stat-bg-effect masters"></div>
+                            <div class="stat-icon-container">
+                                <div class="stat-icon masters">⏱️</div>
+                                <div class="icon-pulse masters"></div>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number">15h 42m</div>
+                                <div class="stat-label">Study Time</div>
+                                <div class="stat-sublabel">Dedicated Learning</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Challenge Cards Grid -->
+                <section class="masters-challenges-section">
+                    <div class="section-header">
+                        <h2 class="section-title masters">👑 Elite Challenge Cards</h2>
+                        <div class="difficulty-indicator masters">
+                            <span class="difficulty-text">Difficulty: Legendary</span>
+                            <div class="difficulty-bars">
+                                <div class="bar active masters"></div>
+                                <div class="bar active masters"></div>
+                                <div class="bar active masters"></div>
+                                <div class="bar active masters"></div>
+                                <div class="bar active masters pulse"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="masters-challenge-grid">
+                        <!-- Ultimate Mastery Challenge Card -->
+                        <div class="challenge-master-card neo-glass hover-lift magnetic-card" data-tilt onclick="startChallenge('ultimate-mastery')">
+                            <div class="challenge-bg-animation masters"></div>
+                            <div class="challenge-crown-badge">
+                                <i class="fas fa-crown"></i>
+                                <div class="badge-glow"></div>
+                            </div>
+                            
+                            <div class="challenge-header">
+                                <div class="challenge-icon ultimate">
+                                    <i class="fas fa-chess-king"></i>
+                                    <div class="icon-aura"></div>
+                                </div>
+                                <div class="challenge-title">Ultimate Mastery</div>
+                                <div class="challenge-type">Comprehensive Test</div>
+                            </div>
+                            
+                            <div class="challenge-description">
+                                <p>The pinnacle challenge combining all your knowledge into expert-level scenarios</p>
+                            </div>
+                            
+                            <div class="challenge-stats">
+                                <div class="stat-item">
+                                    <i class="fas fa-brain"></i>
+                                    <span>25 Expert Questions</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>60 Minutes</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-star"></i>
+                                    <span>500+ XP</span>
+                                </div>
+                            </div>
+                            
+                            <div class="challenge-features">
+                                <div class="feature-tag masters">🧩 Multi-layered</div>
+                                <div class="feature-tag masters">📊 Data Integration</div>
+                                <div class="feature-tag masters">🎯 Strategic Thinking</div>
+                            </div>
+                            
+                            <div class="excellence-requirement">
+                                <div class="req-icon">🏆</div>
+                                <span>95% accuracy for Masters certification</span>
+                            </div>
+                            
+                            <button class="challenge-action-btn masters">
+                                <i class="fas fa-crown"></i>
+                                <span>Begin Ultimate Challenge</span>
+                                <div class="btn-energy-wave"></div>
+                            </button>
+                        </div>
+
+                        <!-- AI Tournament Challenge Card -->
+                        <div class="challenge-master-card ai-powered neo-glass hover-lift magnetic-card" data-tilt onclick="startChallenge('ai-tournament')">
+                            <div class="challenge-bg-animation ai"></div>
+                            <div class="ai-badge-corner">
+                                <i class="fas fa-robot"></i>
+                                <div class="ai-circuit-pattern"></div>
+                            </div>
+                            
+                            <div class="challenge-header">
+                                <div class="challenge-icon ai">
+                                    <i class="fas fa-robot"></i>
+                                    <div class="icon-digital-rain"></div>
+                                </div>
+                                <div class="challenge-title">AI Masters Tournament</div>
+                                <div class="challenge-type">Adaptive Challenge</div>
+                            </div>
+                            
+                            <div class="challenge-description">
+                                <p>Face our most advanced AI in an adaptive challenge that evolves with your responses</p>
+                            </div>
+                            
+                            <div class="challenge-stats ai">
+                                <div class="stat-item">
+                                    <i class="fas fa-infinity"></i>
+                                    <span>Adaptive Length</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Dynamic Difficulty</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-brain"></i>
+                                    <span>Neural Analysis</span>
+                                </div>
+                            </div>
+                            
+                            <div class="ai-confidence-meter">
+                                <div class="confidence-label">AI Confidence</div>
+                                <div class="confidence-bar">
+                                    <div class="confidence-fill" style="width: 98.7%"></div>
+                                    <span class="confidence-value">98.7%</span>
+                                </div>
+                            </div>
+                            
+                            <div class="tournament-stats">
+                                <div class="tournament-stat">
+                                    <span class="stat-label">Success Rate:</span>
+                                    <span class="stat-value danger">12%</span>
+                                </div>
+                                <div class="tournament-stat">
+                                    <span class="stat-label">Champions:</span>
+                                    <span class="stat-value">0.3%</span>
+                                </div>
+                            </div>
+                            
+                            <button class="challenge-action-btn ai">
+                                <i class="fas fa-robot"></i>
+                                <span>Challenge the AI</span>
+                                <div class="btn-digital-glow"></div>
+                            </button>
+                        </div>
+
+                        <!-- Speed Lightning Challenge Card -->
+                        <div class="challenge-master-card speed-focused neo-glass hover-lift magnetic-card" data-tilt onclick="startChallenge('lightning-speed')">
+                            <div class="challenge-bg-animation speed"></div>
+                            <div class="speed-badge-corner">
+                                <i class="fas fa-bolt"></i>
+                                <div class="lightning-effect"></div>
+                            </div>
+                            
+                            <div class="challenge-header">
+                                <div class="challenge-icon speed">
+                                    <i class="fas fa-stopwatch"></i>
+                                    <div class="icon-speed-lines"></div>
+                                </div>
+                                <div class="challenge-title">Lightning Masters</div>
+                                <div class="challenge-type">Speed Challenge</div>
+                            </div>
+                            
+                            <div class="challenge-description">
+                                <p>Test your mastery under extreme pressure with lightning-fast expert questions</p>
+                            </div>
+                            
+                            <div class="challenge-stats speed">
+                                <div class="stat-item">
+                                    <i class="fas fa-lightning-bolt"></i>
+                                    <span>30 Quick Fire</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-stopwatch"></i>
+                                    <span>15 Minutes</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-rocket"></i>
+                                    <span>Speed Bonus</span>
+                                </div>
+                            </div>
+                            
+                            <div class="speed-meter">
+                                <div class="meter-label">Required Speed</div>
+                                <div class="meter-display">
+                                    <span class="speed-value">30</span>
+                                    <span class="speed-unit">sec/question</span>
+                                </div>
+                            </div>
+                            
+                            <div class="leaderboard-mini">
+                                <div class="leader-header">🏆 Speed Record</div>
+                                <div class="leader-entry">
+                                    <span class="leader-name">SpeedDemon</span>
+                                    <span class="leader-score">12:34</span>
+                                </div>
+                            </div>
+                            
+                            <button class="challenge-action-btn speed">
+                                <i class="fas fa-bolt"></i>
+                                <span>Start Speed Run</span>
+                                <div class="btn-lightning-trail"></div>
+                            </button>
+                        </div>
+
+                        <!-- Perfect Score Challenge Card -->
+                        <div class="challenge-master-card perfection neo-glass hover-lift magnetic-card" data-tilt onclick="startChallenge('perfection-quest')">
+                            <div class="challenge-bg-animation perfect"></div>
+                            <div class="perfect-badge-corner">
+                                <i class="fas fa-gem"></i>
+                                <div class="diamond-sparkle"></div>
+                            </div>
+                            
+                            <div class="challenge-header">
+                                <div class="challenge-icon perfect">
+                                    <i class="fas fa-star"></i>
+                                    <div class="icon-perfect-aura"></div>
+                                </div>
+                                <div class="challenge-title">Perfection Quest</div>
+                                <div class="challenge-type">Zero Tolerance</div>
+                            </div>
+                            
+                            <div class="challenge-description">
+                                <p>One mistake ends everything. Achieve 100% accuracy on legendary difficulty</p>
+                            </div>
+                            
+                            <div class="challenge-stats perfect">
+                                <div class="stat-item">
+                                    <i class="fas fa-bullseye"></i>
+                                    <span>15 Perfect Qs</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-ban"></i>
+                                    <span>Zero Mistakes</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-gem"></i>
+                                    <span>Legendary Rewards</span>
+                                </div>
+                            </div>
+                            
+                            <div class="perfect-rules">
+                                <div class="rule-item">💎 One attempt only</div>
+                                <div class="rule-item">🎯 100% accuracy required</div>
+                                <div class="rule-item">👑 Legendary status awaits</div>
+                            </div>
+                            
+                            <div class="perfect-rewards-preview">
+                                <div class="reward-header">🏆 Perfect Master Rewards</div>
+                                <div class="reward-list">
+                                    <div class="reward-item">💎 1000 Bonus XP</div>
+                                    <div class="reward-item">👑 Perfect Master Title</div>
+                                    <div class="reward-item">🏆 Legendary Achievement</div>
+                                </div>
+                            </div>
+                            
+                            <button class="challenge-action-btn perfect">
+                                <i class="fas fa-gem"></i>
+                                <span>Attempt Perfection</span>
+                                <div class="btn-diamond-shine"></div>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Masters Leaderboard Card -->
+                <section class="masters-leaderboard-section">
+                    <div class="section-header">
+                        <h2 class="section-title">🏆 Global Masters Leaderboard</h2>
+                    </div>
+                    
+                    <div class="leaderboard-master-card neo-glass hover-lift">
+                        <div class="leaderboard-bg-glow"></div>
+                        <div class="leaderboard-header">
+                            <div class="leaderboard-icon">
+                                <i class="fas fa-crown"></i>
+                                <div class="crown-rays"></div>
+                            </div>
+                            <div class="leaderboard-title">Elite Hall of Fame</div>
+                        </div>
+                        
+                        <div class="leaderboard-entries">
+                            <div class="leader-entry champion">
+                                <div class="rank-badge gold">👑</div>
+                                <div class="leader-info">
+                                    <div class="leader-name">NeuralMaster</div>
+                                    <div class="leader-title">Perfect Score Champion</div>
+                                </div>
+                                <div class="leader-stats">
+                                    <div class="leader-score">100%</div>
+                                    <div class="leader-badge legendary">Legendary</div>
+                                </div>
+                            </div>
+                            
+                            <div class="leader-entry silver">
+                                <div class="rank-badge silver">🥈</div>
+                                <div class="leader-info">
+                                    <div class="leader-name">QuantumLearner</div>
+                                    <div class="leader-title">Speed Record Holder</div>
+                                </div>
+                                <div class="leader-stats">
+                                    <div class="leader-score">98.7%</div>
+                                    <div class="leader-badge mythic">Mythic</div>
+                                </div>
+                            </div>
+                            
+                            <div class="leader-entry bronze">
+                                <div class="rank-badge bronze">🥉</div>
+                                <div class="leader-info">
+                                    <div class="leader-name">AIWhisperer</div>
+                                    <div class="leader-title">Tournament Victor</div>
+                                </div>
+                                <div class="leader-stats">
+                                    <div class="leader-score">97.3%</div>
+                                    <div class="leader-badge epic">Epic</div>
+                                </div>
+                            </div>
+                            
+                            <div class="leader-entry your-position">
+                                <div class="rank-badge mystery">?</div>
+                                <div class="leader-info">
+                                    <div class="leader-name">You</div>
+                                    <div class="leader-title">Ready for greatness?</div>
+                                </div>
+                                <div class="leader-stats">
+                                    <div class="leader-score">--</div>
+                                    <div class="leader-badge start">Start Challenge</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Elite Benefits Cards -->
+                <section class="elite-benefits-section">
+                    <div class="section-header">
+                        <h2 class="section-title">💎 Masters Exclusive Perks</h2>
+                        <p class="section-subtitle">Rewards of excellence</p>
+                    </div>
+                    
+                    <div class="benefits-card-grid">
+                        <div class="benefit-card neo-glass hover-lift magnetic-card" data-tilt>
+                            <div class="benefit-bg-glow"></div>
+                            <div class="benefit-icon-container">
+                                <div class="benefit-icon">🎓</div>
+                                <div class="icon-shine"></div>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>Master Certification</h4>
+                                <p>Official MindLoop Masters certificate with blockchain verification</p>
+                                <div class="benefit-status earned">✓ Earned</div>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-card neo-glass hover-lift magnetic-card" data-tilt>
+                            <div class="benefit-bg-glow"></div>
+                            <div class="benefit-icon-container">
+                                <div class="benefit-icon">🤖</div>
+                                <div class="icon-pulse-ai"></div>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>Personal AI Tutor</h4>
+                                <p>Advanced AI assistant for personalized learning paths</p>
+                                <div class="benefit-status available">Available</div>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-card neo-glass hover-lift magnetic-card" data-tilt>
+                            <div class="benefit-bg-glow"></div>
+                            <div class="benefit-icon-container">
+                                <div class="benefit-icon">👑</div>
+                                <div class="icon-royal-glow"></div>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>Elite Profile Badge</h4>
+                                <p>Exclusive golden crown badge visible to all users</p>
+                                <div class="benefit-status earned">✓ Active</div>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-card neo-glass hover-lift magnetic-card" data-tilt>
+                            <div class="benefit-bg-glow"></div>
+                            <div class="benefit-icon-container">
+                                <div class="benefit-icon">📊</div>
+                                <div class="icon-data-flow"></div>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>Advanced Analytics</h4>
+                                <p>Deep learning insights and performance analytics</p>
+                                <div class="benefit-status available">Available</div>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-card neo-glass hover-lift magnetic-card" data-tilt>
+                            <div class="benefit-bg-glow"></div>
+                            <div class="benefit-icon-container">
+                                <div class="benefit-icon">🚀</div>
+                                <div class="icon-rocket-trail"></div>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>Beta Access</h4>
+                                <p>First access to new features and experimental tools</p>
+                                <div class="benefit-status premium">Premium</div>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-card neo-glass hover-lift magnetic-card" data-tilt>
+                            <div class="benefit-bg-glow"></div>
+                            <div class="benefit-icon-container">
+                                <div class="benefit-icon">🌟</div>
+                                <div class="icon-mentorship"></div>
+                            </div>
+                            <div class="benefit-content">
+                                <h4>Mentorship Program</h4>
+                                <p>Guide other learners and earn exclusive mentor rewards</p>
+                                <div class="benefit-status available">Join Now</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="particles.js"></script>
+    <script src="physics.js"></script>
+    <script src="ai-processor.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroQuest • AI Learning Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Client-side AI libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.0.0/dist/tf.min.js"></script>
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+</head>
+<body class="dark-theme">
+    <!-- Animated Background -->
+    <div class="particle-canvas" id="particle-canvas"></div>
+    <canvas id="neural-bg" class="neural-background"></canvas>
+    
+    <!-- Loading Screen -->
+    <div class="ai-loading-screen" id="loading-screen">
+        <div class="ai-brain-container">
+            <div class="ai-brain">
+                <div class="neural-network">
+                    <div class="neuron" style="--delay: 0s;"></div>
+                    <div class="neuron" style="--delay: 0.5s;"></div>
+                    <div class="neuron" style="--delay: 1s;"></div>
+                    <div class="neuron" style="--delay: 1.5s;"></div>
+                </div>
+                <div class="brain-waves"></div>
+            </div>
+            <div class="loading-text">
+                <span class="ai-text">Initializing AI...</span>
+                <div class="loading-dots">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-container">
+        <!-- Futuristic Sidebar -->
+        <nav class="sidebar neo-glass" id="sidebar">
+            <div class="sidebar-glow"></div>
+            
+            <div class="sidebar-header">
+                <div class="logo-container hover-float">
+                    <div class="logo-icon">
+                        <i class="fas fa-brain"></i>
+                        <div class="icon-particles"></div>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-main gradient-text">NeuroQuest</span>
+                        <span class="logo-sub">AI Powered</span>
+                    </div>
+                </div>
+                
+                <div class="ai-status-indicator">
+                    <div class="ai-dot pulsing"></div>
+                    <span class="ai-status-text">AI Online</span>
+                </div>
+            </div>
+            
+            <div class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link active magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-home nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Dashboard</span>
+                            <div class="nav-trail"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="learn.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-rocket nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Learn</span>
+                            <div class="nav-badge ai-badge">AI</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="explorer.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-compass nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Explorer</span>
+                            <div class="nav-progress">
+                                <div class="progress-ring">
+                                    <svg><circle cx="10" cy="10" r="8"></circle></svg>
+                                </div>
+                                <span class="progress-text">8/12</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="challenger.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-bolt nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Challenger</span>
+                            <div class="nav-badge energy">⚡</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="masters.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-crown nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Masters</span>
+                            <div class="nav-badge locked">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="progress.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-chart-line nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Progress</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="achievements.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-trophy nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Achievements</span>
+                            <div class="nav-badge new-glow">3</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-cog nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="streak-widget neo-glass hover-float">
+                <div class="streak-fire">🔥</div>
+                <div class="streak-info">
+                    <div class="streak-number counter" data-target="7">0</div>
+                    <div class="streak-text">Day Streak</div>
+                </div>
+                <div class="streak-progress-ring">
+                    <svg>
+                        <circle cx="20" cy="20" r="18"></circle>
+                        <circle cx="20" cy="20" r="18" class="progress" style="--progress: 46%"></circle>
+                    </svg>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header neo-glass floating-header">
+                <button class="mobile-toggle futuristic-btn" id="mobile-toggle">
+                    <div class="toggle-lines">
+                        <span></span><span></span><span></span>
+                    </div>
+                </button>
+                
+                <div class="header-content">
+                    <div class="header-left">
+                        <h1 class="page-title holographic-text">Dashboard</h1>
+                        <p class="page-subtitle">Ready to break some records? 🚀</p>
+                    </div>
+                    
+                    <div class="header-right">
+                        <div class="stats-mini">
+                            <div class="mini-stat">
+                                <i class="fas fa-coins"></i>
+                                <span class="counter" data-target="2450">0</span>
+                            </div>
+                            <div class="mini-stat">
+                                <i class="fas fa-star"></i>
+                                <span>Explorer</span>
+                            </div>
+                        </div>
+                        
+                        <div class="user-profile hover-lift">
+                            <div class="profile-avatar">
+                                <i class="fas fa-user"></i>
+                                <div class="online-indicator"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="content-area">
+                <!-- Hero Stats -->
+                <section class="hero-section">
+                    <div class="hero-stats-grid">
+                        <div class="hero-card neo-glass hover-lift magnetic-card" data-tilt>
+                            <div class="card-bg-animation"></div>
+                            <div class="card-icon">
+                                <i class="fas fa-fire"></i>
+                                <div class="icon-particles"></div>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-number counter" data-target="7">0</div>
+                                <div class="card-label">Day Streak</div>
+                                <div class="card-subtitle">On fire! 🔥</div>
+                            </div>
+                            <canvas class="flame-animation" width="80" height="60"></canvas>
+                        </div>
+
+                        <div class="hero-card neo-glass hover-lift magnetic-card" data-tilt>
+                            <div class="card-bg-animation"></div>
+                            <div class="card-icon ai-glow">
+                                <i class="fas fa-brain"></i>
+                                <div class="neural-links"></div>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-number counter" data-target="127">0</div>
+                                <div class="card-label">AI Questions</div>
+                                <div class="card-subtitle">Generated by AI</div>
+                            </div>
+                            <div class="ai-visualization">
+                                <div class="ai-nodes">
+                                    <div class="node"></div>
+                                    <div class="node"></div>
+                                    <div class="node"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hero-card neo-glass hover-lift magnetic-card" data-tilt>
+                            <div class="card-bg-animation"></div>
+                            <div class="card-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                                <div class="success-particles"></div>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-number counter" data-target="12">0</div>
+                                <div class="card-label">Levels Done</div>
+                                <div class="card-subtitle">Crushing it!</div>
+                            </div>
+                        </div>
+
+                        <div class="hero-card neo-glass hover-lift magnetic-card" data-tilt>
+                            <div class="card-bg-animation"></div>
+                            <div class="card-icon">
+                                <i class="fas fa-file-alt"></i>
+                                <div class="processing-animation"></div>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-number counter" data-target="5">0</div>
+                                <div class="card-label">Docs Processed</div>
+                                <div class="card-subtitle">By AI engine</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- AI Upload Section -->
+                <section class="ai-upload-section">
+                    <div class="section-header">
+                        <h2 class="section-title gradient-text">AI Document Processor</h2>
+                        <p class="section-subtitle">Drop your files and watch the magic happen ✨</p>
+                    </div>
+                    
+                    <div class="upload-container neo-glass hover-lift">
+                        <div class="upload-bg-effect"></div>
+                        
+                        <form id="ai-upload-form" class="upload-form">
+                            <div class="upload-zone" id="upload-zone">
+                                <input type="file" id="file-input" accept=".pdf,.docx,.txt,.pptx" multiple hidden>
+                                
+                                <div class="upload-visual">
+                                    <div class="upload-icon">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <div class="upload-particles"></div>
+                                    </div>
+                                    
+                                    <div class="upload-text">
+                                        <h3>Drop your files here</h3>
+                                        <p>or click to browse</p>
+                                        <div class="supported-formats">
+                                            <span class="format-tag">PDF</span>
+                                            <span class="format-tag">DOCX</span>
+                                            <span class="format-tag">TXT</span>
+                                            <span class="format-tag">PPTX</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="upload-progress" id="upload-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill"></div>
+                                    </div>
+                                    <div class="progress-text">Processing with AI...</div>
+                                </div>
+                            </div>
+                            
+                            <div class="upload-actions">
+                                <button type="submit" class="ai-process-btn futuristic-btn">
+                                    <i class="fas fa-robot"></i>
+                                    <span>Process with AI</span>
+                                    <div class="btn-energy"></div>
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <div class="upload-status" id="upload-status"></div>
+                    </div>
+                </section>
+
+                <!-- Activity Feed -->
+                <section class="activity-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Recent Activity</h2>
+                        <div class="activity-filter">
+                            <button class="filter-btn active">All</button>
+                            <button class="filter-btn">Levels</button>
+                            <button class="filter-btn">Uploads</button>
+                            <button class="filter-btn">Achievements</button>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-feed">
+                        <div class="activity-item neo-glass hover-lift" data-type="level">
+                            <div class="activity-icon">
+                                <i class="fas fa-trophy"></i>
+                                <div class="icon-glow"></div>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Level Completed!</div>
+                                <div class="activity-description">Crushed "Document Basics" with 100% score</div>
+                                <div class="activity-time">2 hours ago</div>
+                            </div>
+                            <div class="activity-reward">
+                                <span class="reward-points">+100 XP</span>
+                            </div>
+                        </div>
+
+                        <div class="activity-item neo-glass hover-lift" data-type="upload">
+                            <div class="activity-icon ai-glow">
+                                <i class="fas fa-brain"></i>
+                                <div class="ai-pulse"></div>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">AI Processing Complete</div>
+                                <div class="activity-description">Generated 25 questions from "Study Guide.pdf"</div>
+                                <div class="activity-time">1 day ago</div>
+                            </div>
+                            <div class="activity-badge">
+                                <span class="ai-badge-small">AI</span>
+                            </div>
+                        </div>
+
+                        <div class="activity-item neo-glass hover-lift" data-type="achievement">
+                            <div class="activity-icon">
+                                <i class="fas fa-fire"></i>
+                                <div class="fire-glow"></div>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">Achievement Unlocked!</div>
+                                <div class="activity-description">Week Warrior - 7 day streak maintained</div>
+                                <div class="activity-time">2 days ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- AI Processing Modal -->
+    <div class="ai-modal" id="ai-modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content neo-glass">
+            <div class="ai-processing-animation">
+                <div class="ai-brain-scan">
+                    <div class="brain-outline"></div>
+                    <div class="scan-line"></div>
+                </div>
+                <div class="processing-text">
+                    <h3>AI is analyzing your document...</h3>
+                    <p id="processing-status">Extracting text content...</p>
+                </div>
+                <div class="processing-stats">
+                    <div class="stat">
+                        <span class="label">Progress</span>
+                        <span class="value" id="processing-progress">0%</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">Confidence</span>
+                        <span class="value" id="ai-confidence">--</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="success-modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <div class="success-animation">
+                <div class="success-circle">
+                    <i class="fas fa-check"></i>
+                </div>
+                <h2>Document Processed Successfully!</h2>
+                <p>AI generated <span id="questions-count">0</span> questions across <span id="levels-count">0</span> levels</p>
+                <button class="continue-btn futuristic-btn" onclick="window.location.href='explorer.html'">
+                    <span>Start Learning</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="particles.js"></script>
+    <script src="physics.js"></script>
+    <script src="ai-processor.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

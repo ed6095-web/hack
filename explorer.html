@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindLoop • Explorer Levels</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <!-- Background -->
+    <div class="particle-canvas" id="particle-canvas"></div>
+    <canvas id="neural-bg" class="neural-background"></canvas>
+
+    <div class="app-container">
+        <!-- Sidebar (same as other pages) -->
+        <nav class="sidebar neo-glass" id="sidebar">
+            <div class="sidebar-glow"></div>
+            
+            <div class="sidebar-header">
+                <div class="logo-container hover-float">
+                    <div class="logo-icon">
+                        <i class="fas fa-brain"></i>
+                        <div class="icon-particles"></div>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-main gradient-text">MindLoop</span>
+                        <span class="logo-sub">AI Powered</span>
+                    </div>
+                </div>
+                
+                <div class="ai-status-indicator">
+                    <div class="ai-dot pulsing"></div>
+                    <span class="ai-status-text">AI Online</span>
+                </div>
+            </div>
+            
+            <div class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-home nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="learn.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-rocket nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Learn</span>
+                            <div class="nav-badge ai-badge">AI</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="explorer.html" class="nav-link active magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-compass nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Explorer</span>
+                            <div class="nav-progress">
+                                <div class="progress-ring">
+                                    <svg><circle cx="10" cy="10" r="8"></circle></svg>
+                                </div>
+                                <span class="progress-text">8/12</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="challenger.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-bolt nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Challenger</span>
+                            <div class="nav-badge energy">⚡</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="masters.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-crown nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Masters</span>
+                            <div class="nav-badge locked">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="progress.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-chart-line nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Progress</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="achievements.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-trophy nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Achievements</span>
+                            <div class="nav-badge new-glow">3</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-cog nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="streak-widget neo-glass hover-float">
+                <div class="streak-fire">🔥</div>
+                <div class="streak-info">
+                    <div class="streak-number">7</div>
+                    <div class="streak-text">Day Streak</div>
+                </div>
+                <div class="streak-progress-ring">
+                    <svg>
+                        <circle cx="20" cy="20" r="18"></circle>
+                        <circle cx="20" cy="20" r="18" class="progress" style="--progress: 46%"></circle>
+                    </svg>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header neo-glass floating-header">
+                <button class="mobile-toggle futuristic-btn" id="mobile-toggle">
+                    <div class="toggle-lines">
+                        <span></span><span></span><span></span>
+                    </div>
+                </button>
+                
+                <div class="header-content">
+                    <div class="header-left">
+                        <h1 class="page-title holographic-text">Explorer Levels</h1>
+                        <p class="page-subtitle">Master the fundamentals with beginner-friendly challenges 🎯</p>
+                    </div>
+                    
+                    <div class="header-right">
+                        <div class="level-badge explorer">Beginner Friendly</div>
+                        
+                        <div class="user-profile hover-lift">
+                            <div class="profile-avatar">
+                                <i class="fas fa-user"></i>
+                                <div class="online-indicator"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Explorer Content -->
+            <div class="content-area">
+                <!-- Level Overview -->
+                <section class="level-overview">
+                    <div class="overview-card neo-glass hover-lift" data-tilt>
+                        <div class="overview-bg"></div>
+                        <div class="overview-content">
+                            <div class="overview-icon">
+                                <i class="fas fa-compass"></i>
+                                <div class="icon-rings"></div>
+                            </div>
+                            <div class="overview-text">
+                                <h3>8 of 12 Levels Completed</h3>
+                                <p>You're crushing it! Keep up the momentum and unlock Challenger levels.</p>
+                                <div class="overview-progress">
+                                    <div class="progress-bar large">
+                                        <div class="progress-fill" style="width: 67%"></div>
+                                        <div class="progress-glow"></div>
+                                    </div>
+                                    <span class="progress-text">67% Complete</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Quick Stats -->
+                <section class="quick-stats">
+                    <div class="stats-grid mini">
+                        <div class="stat-mini neo-glass">
+                            <div class="stat-icon">⭐</div>
+                            <div class="stat-value">850</div>
+                            <div class="stat-label">XP Earned</div>
+                        </div>
+                        <div class="stat-mini neo-glass">
+                            <div class="stat-icon">🎯</div>
+                            <div class="stat-value">89%</div>
+                            <div class="stat-label">Accuracy</div>
+                        </div>
+                        <div class="stat-mini neo-glass">
+                            <div class="stat-icon">⚡</div>
+                            <div class="stat-value">4.2m</div>
+                            <div class="stat-label">Avg Time</div>
+                        </div>
+                        <div class="stat-mini neo-glass">
+                            <div class="stat-icon">🏆</div>
+                            <div class="stat-value">3</div>
+                            <div class="stat-label">Perfect Scores</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Levels Grid -->
+                <section class="levels-section">
+                    <div class="section-header">
+                        <h2 class="section-title">🚀 Available Levels</h2>
+                        <div class="level-filters">
+                            <button class="filter-btn active">All</button>
+                            <button class="filter-btn">Completed</button>
+                            <button class="filter-btn">In Progress</button>
+                            <button class="filter-btn">Locked</button>
+                        </div>
+                    </div>
+                    
+                    <div class="levels-grid">
+                        <!-- Completed Level -->
+                        <div class="level-card completed neo-glass hover-lift" data-tilt onclick="startLevel('explorer-1')">
+                            <div class="level-bg-effect"></div>
+                            <div class="level-status">✅</div>
+                            <div class="level-difficulty explorer">Explorer</div>
+                            <div class="level-type">Foundation</div>
+                            
+                            <div class="level-content">
+                                <h4>Document Basics</h4>
+                                <p>Master fundamental concepts and key terminology from uploaded materials</p>
+                                
+                                <div class="level-meta">
+                                    <span class="question-count"><i class="fas fa-question-circle"></i> 8 questions</span>
+                                    <span class="time-estimate"><i class="fas fa-clock"></i> 15 min</span>
+                                    <span class="points-earned"><i class="fas fa-star"></i> +100 XP</span>
+                                </div>
+                                
+                                <div class="level-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 100%"></div>
+                                    </div>
+                                    <span class="progress-text">Perfect Score: 8/8</span>
+                                </div>
+                                
+                                <div class="level-score">
+                                    <div class="score-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="score-text">Perfect!</span>
+                                </div>
+                            </div>
+                            
+                            <button class="level-action replay">
+                                <i class="fas fa-redo"></i>
+                                <span>Replay</span>
+                            </button>
+                        </div>
+
+                        <!-- In Progress Level -->
+                        <div class="level-card in-progress neo-glass hover-lift" data-tilt onclick="startLevel('explorer-2')">
+                            <div class="level-bg-effect"></div>
+                            <div class="level-status">🔄</div>
+                            <div class="level-difficulty explorer">Explorer</div>
+                            <div class="level-type">Vocabulary</div>
+                            
+                            <div class="level-content">
+                                <h4>Key Terminology</h4>
+                                <p>Master important vocabulary and definitions from your study materials</p>
+                                
+                                <div class="level-meta">
+                                    <span class="question-count"><i class="fas fa-question-circle"></i> 12 questions</span>
+                                    <span class="time-estimate"><i class="fas fa-clock"></i> 20 min</span>
+                                    <span class="points-available"><i class="fas fa-star"></i> +150 XP</span>
+                                </div>
+                                
+                                <div class="level-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 60%"></div>
+                                        <div class="progress-indicator" style="left: 60%"></div>
+                                    </div>
+                                    <span class="progress-text">7/12 Complete</span>
+                                </div>
+                                
+                                <div class="current-score">
+                                    <span class="score-current">7</span>
+                                    <span class="score-separator">/</span>
+                                    <span class="score-total">12</span>
+                                    <span class="score-percentage">58%</span>
+                                </div>
+                            </div>
+                            
+                            <button class="level-action continue">
+                                <i class="fas fa-play"></i>
+                                <span>Continue</span>
+                            </button>
+                        </div>
+
+                        <!-- Unlocked Level -->
+                        <div class="level-card unlocked neo-glass hover-lift" data-tilt onclick="startLevel('explorer-3')">
+                            <div class="level-bg-effect"></div>
+                            <div class="level-status">🔓</div>
+                            <div class="level-difficulty explorer">Explorer</div>
+                            <div class="level-type">Practice</div>
+                            
+                            <div class="level-content">
+                                <h4>Practice Exercises</h4>
+                                <p>Apply your knowledge with hands-on practice questions and scenarios</p>
+                                
+                                <div class="level-meta">
+                                    <span class="question-count"><i class="fas fa-question-circle"></i> 10 questions</span>
+                                    <span class="time-estimate"><i class="fas fa-clock"></i> 18 min</span>
+                                    <span class="points-available"><i class="fas fa-star"></i> +120 XP</span>
+                                </div>
+                                
+                                <div class="level-preview">
+                                    <div class="preview-topics">
+                                        <span class="topic-tag">Applications</span>
+                                        <span class="topic-tag">Scenarios</span>
+                                        <span class="topic-tag">Problem Solving</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button class="level-action start">
+                                <i class="fas fa-rocket"></i>
+                                <span>Start Level</span>
+                            </button>
+                        </div>
+
+                        <!-- AI Generated Level -->
+                        <div class="level-card ai-generated unlocked neo-glass hover-lift" data-tilt onclick="startLevel('explorer-ai-1')">
+                            <div class="level-bg-effect ai"></div>
+                            <div class="level-status">🔓</div>
+                            <div class="level-difficulty explorer">Explorer</div>
+                            <div class="ai-badge">🤖 AI Generated</div>
+                            
+                            <div class="level-content">
+                                <h4>Study Guide - Fundamentals</h4>
+                                <p>AI-created questions from your uploaded Study Guide.pdf document</p>
+                                
+                                <div class="level-meta">
+                                    <span class="question-count"><i class="fas fa-question-circle"></i> 15 questions</span>
+                                    <span class="time-estimate"><i class="fas fa-clock"></i> 22 min</span>
+                                    <span class="points-available"><i class="fas fa-star"></i> +180 XP</span>
+                                </div>
+                                
+                                <div class="ai-stats">
+                                    <div class="ai-confidence">
+                                        <span class="confidence-label">AI Confidence:</span>
+                                        <span class="confidence-value">92%</span>
+                                        <div class="confidence-bar">
+                                            <div class="confidence-fill" style="width: 92%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="generation-time">
+                                        <small>📊 Generated 2 days ago • Processing time: 2.3s</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button class="level-action start ai">
+                                <i class="fas fa-brain"></i>
+                                <span>Start AI Level</span>
+                            </button>
+                        </div>
+
+                        <!-- Locked Level -->
+                        <div class="level-card locked neo-glass">
+                            <div class="level-bg-effect locked"></div>
+                            <div class="level-status">🔒</div>
+                            <div class="level-difficulty explorer">Explorer</div>
+                            <div class="level-type">Advanced</div>
+                            
+                            <div class="level-content">
+                                <h4>Advanced Concepts</h4>
+                                <p>Dive deeper into complex topics and advanced understanding</p>
+                                
+                                <div class="level-meta disabled">
+                                    <span class="question-count"><i class="fas fa-question-circle"></i> 14 questions</span>
+                                    <span class="time-estimate"><i class="fas fa-clock"></i> 25 min</span>
+                                    <span class="points-available"><i class="fas fa-star"></i> +200 XP</span>
+                                </div>
+                                
+                                <div class="unlock-requirement">
+                                    <div class="requirement-icon">🔒</div>
+                                    <div class="requirement-text">
+                                        <span>Complete "Practice Exercises" to unlock</span>
+                                        <div class="requirement-progress">
+                                            <div class="req-bar">
+                                                <div class="req-fill" style="width: 0%"></div>
+                                            </div>
+                                            <span>0/1 requirement</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- More Locked Levels -->
+                        <div class="level-card locked neo-glass">
+                            <div class="level-bg-effect locked"></div>
+                            <div class="level-status">🔒</div>
+                            <div class="level-difficulty explorer">Explorer</div>
+                            <div class="level-type">Mastery</div>
+                            
+                            <div class="level-content">
+                                <h4>Comprehensive Review</h4>
+                                <p>Test your complete understanding of all Explorer concepts</p>
+                                
+                                <div class="level-meta disabled">
+                                    <span class="question-count"><i class="fas fa-question-circle"></i> 20 questions</span>
+                                    <span class="time-estimate"><i class="fas fa-clock"></i> 30 min</span>
+                                    <span class="points-available"><i class="fas fa-star"></i> +300 XP</span>
+                                </div>
+                                
+                                <div class="unlock-requirement">
+                                    <div class="requirement-icon">🔒</div>
+                                    <div class="requirement-text">
+                                        <span>Complete all previous Explorer levels</span>
+                                        <div class="requirement-progress">
+                                            <div class="req-bar">
+                                                <div class="req-fill" style="width: 75%"></div>
+                                            </div>
+                                            <span>3/4 requirements</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Tips & Strategies -->
+                <section class="tips-section">
+                    <div class="section-header">
+                        <h2 class="section-title">💡 Explorer Pro Tips</h2>
+                        <p class="section-subtitle">Level up your game with these strategies</p>
+                    </div>
+                    
+                    <div class="tips-grid">
+                        <div class="tip-card neo-glass hover-lift" data-tilt>
+                            <div class="tip-icon">🎯</div>
+                            <h4>Take Your Time</h4>
+                            <p>Explorer levels are designed for learning. Don't rush - focus on understanding the concepts thoroughly.</p>
+                            <div class="tip-stats">
+                                <span class="tip-metric">📊 Students who spend 2+ min per question score 23% higher</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tip-card neo-glass hover-lift" data-tilt>
+                            <div class="tip-icon">📝</div>
+                            <h4>Read Explanations</h4>
+                            <p>Each question comes with detailed explanations. Read them even if you got the answer right!</p>
+                            <div class="tip-stats">
+                                <span class="tip-metric">🧠 Reading explanations improves retention by 34%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tip-card neo-glass hover-lift" data-tilt>
+                            <div class="tip-icon">🔄</div>
+                            <h4>Retry for Perfection</h4>
+                            <p>You can retake any level to improve your score. Practice makes perfect!</p>
+                            <div class="tip-stats">
+                                <span class="tip-metric">⭐ Perfect scores unlock bonus XP and achievements</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tip-card neo-glass hover-lift" data-tilt>
+                            <div class="tip-icon">🤖</div>
+                            <h4>Use AI Hints</h4>
+                            <p>Stuck on a question? AI-powered hints can guide you in the right direction.</p>
+                            <div class="tip-stats">
+                                <span class="tip-metric">💡 Smart hints available after 30 seconds</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="particles.js"></script>
+    <script src="physics.js"></script>
+    <script src="ai-processor.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

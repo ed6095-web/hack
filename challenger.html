@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindLoop • Challenger Levels</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme challenger-theme">
+    <!-- Background -->
+    <div class="particle-canvas" id="particle-canvas"></div>
+    <canvas id="neural-bg" class="neural-background"></canvas>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar neo-glass" id="sidebar">
+            <div class="sidebar-glow challenger"></div>
+            
+            <div class="sidebar-header">
+                <div class="logo-container hover-float">
+                    <div class="logo-icon">
+                        <i class="fas fa-brain"></i>
+                        <div class="icon-particles"></div>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-main gradient-text">MindLoop</span>
+                        <span class="logo-sub">AI Powered</span>
+                    </div>
+                </div>
+                
+                <div class="ai-status-indicator">
+                    <div class="ai-dot pulsing"></div>
+                    <span class="ai-status-text">AI Online</span>
+                </div>
+            </div>
+            
+            <div class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-home nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="learn.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-rocket nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Learn</span>
+                            <div class="nav-badge ai-badge">AI</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="explorer.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-compass nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Explorer</span>
+                            <div class="nav-progress">
+                                <div class="progress-ring">
+                                    <svg><circle cx="10" cy="10" r="8"></circle></svg>
+                                </div>
+                                <span class="progress-text">12/12</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="challenger.html" class="nav-link active magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-bolt nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Challenger</span>
+                            <div class="nav-badge energy">⚡</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="masters.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-crown nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Masters</span>
+                            <div class="nav-badge locked">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="progress.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-chart-line nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Progress</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="achievements.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-trophy nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Achievements</span>
+                            <div class="nav-badge new-glow">3</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link magnetic-hover">
+                            <div class="nav-icon-container">
+                                <i class="fas fa-cog nav-icon"></i>
+                                <div class="icon-orb"></div>
+                            </div>
+                            <span class="nav-text">Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="streak-widget neo-glass hover-float">
+                <div class="streak-fire">🔥</div>
+                <div class="streak-info">
+                    <div class="streak-number">7</div>
+                    <div class="streak-text">Day Streak</div>
+                </div>
+                <div class="streak-progress-ring">
+                    <svg>
+                        <circle cx="20" cy="20" r="18"></circle>
+                        <circle cx="20" cy="20" r="18" class="progress" style="--progress: 46%"></circle>
+                    </svg>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header neo-glass floating-header challenger">
+                <button class="mobile-toggle futuristic-btn" id="mobile-toggle">
+                    <div class="toggle-lines">
+                        <span></span><span></span><span></span>
+                    </div>
+                </button>
+                
+                <div class="header-content">
+                    <div class="header-left">
+                        <h1 class="page-title holographic-text">Challenger Levels</h1>
+                        <p class="page-subtitle">Test your knowledge with intermediate challenges ⚡</p>
+                    </div>
+                    
+                    <div class="header-right">
+                        <div class="level-badge challenger">Intermediate Challenge</div>
+                        
+                        <div class="user-profile hover-lift">
+                            <div class="profile-avatar challenger">
+                                <i class="fas fa-user"></i>
+                                <div class="online-indicator"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Challenger Content -->
+            <div class="content-area">
+                <!-- Unlock Celebration -->
+                <section class="unlock-celebration">
+                    <div class="celebration-card neo-glass hover-lift">
+                        <div class="celebration-bg"></div>
+                        <div class="celebration-content">
+                            <div class="celebration-icon">
+                                <i class="fas fa-bolt"></i>
+                                <div class="lightning-effects"></div>
+                            </div>
+                            <div class="celebration-text">
+                                <h3>🎉 Challenger Mode Unlocked!</h3>
+                                <p>Congratulations! You've mastered all Explorer levels and unlocked intermediate challenges.</p>
+                                <div class="unlock-stats">
+                                    <div class="unlock-stat">
+                                        <span class="stat-value">12/12</span>
+                                        <span class="stat-label">Explorer Complete</span>
+                                    </div>
+                                    <div class="unlock-stat">
+                                        <span class="stat-value">1,200</span>
+                                        <span class="stat-label">XP Earned</span>
+                                    </div>
+                                    <div class="unlock-stat">
+                                        <span class="stat-value">89%</span>
+                                        <span class="stat-label">Avg Score</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Challenger Overview -->
+                <section class="challenger-overview">
+                    <div class="overview-grid">
+                        <div class="overview-item neo-glass">
+                            <div class="overview-icon">⚡</div>
+                            <h4>Higher Difficulty</h4>
+                            <p>Questions require deeper analysis and critical thinking</p>
+                        </div>
+                        <div class="overview-item neo-glass">
+                            <div class="overview-icon">🧠</div>
+                            <h4>Complex Scenarios</h4>
+                            <p>Real-world applications and multi-step problem solving</p>
+                        </div>
+                        <div class="overview-item neo-glass">
+                            <div class="overview-icon">💎</div>
+                            <h4>Premium Rewards</h4>
+                            <p>Earn more XP, unlock exclusive achievements</p>
+                        </div>
+                        <div class="overview-item neo-glass">
+                            <div class="overview-icon">🎯</div>
+                            <h4>Precision Required</h4>
+                            <p>Higher accuracy needed to progress to Masters</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Levels Grid -->
+                <section class="levels-section">
+                    <div class="section-header">
+                        <h2 class="section-title">⚡ Challenger Levels</h2>
+                        <div class="difficulty-indicator">
+                            <span class="difficulty-text">Difficulty: Intermediate</span>
+                            <div class="difficulty-bars">
+                                <div class="bar active"></div>
+                                <div class="bar active"></div>
+                                <div class="bar active"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="levels-grid challenger">
+                        <!-- First Challenger Level -->
+                        <div class="level-card challenger unlocked neo-glass hover-lift" data-tilt onclick="startLevel('challenger-1')">
+                            <div class="level-bg-effect challenger"></div>
+                            <div class="level-status">🔓</div>
+                            <div class="level-difficulty challenger">Challenger</div>
+                            <div class="level-type">Application</div>
+                            
+                            <div class="level-content">
+                                <h4>Advanced Applications</h4>
+                                <p>Apply your knowledge in practical, real-world scenarios and complex situations</p>
+                                
+                                <div class="level-meta challenger">
+                                    <span class="question-count"><i class="fas fa-question-circle"></i> 15 questions</span>
+                                    <span class="time-estimate"><i class="fas fa-clock"></i> 25 min</span>
+                                    <span class="points-available"><i class="fas fa-star"></i> +200 XP</span>
+                                </div>
+                                
+                                <div class="challenge-features">
+                                    <div class="feature-tag">Multi-step Problems</div>
+                                    <div class="feature-tag">Case Studies</div>
+                                    <div class="feature-tag">Critical Thinking</div>
+                                </div>
+                                
+                                <div class="difficulty-warning">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <span>80% accuracy required to unlock next level</span>
+                                </div>
+                            </div>
+                            
+                            <button class="level-action start challenger">
+                                <i class="fas fa-bolt"></i>
+                                <span>Accept Challenge</span>
+                            </button>
+                        </div>
+
+                        <!-- Locked Challenger Levels -->
+                        <div class="level-card challenger locked neo-glass">
+                            <div class="level-bg-effect locked"></div>
+                            <div class="level-status">🔒</div>
+                            <div class="level-difficulty challenger">Challenger</div>
+                            <div class="level-type">Problem Solving</div>
+                            
+                            <div class="level-content">
+                                <h4>Complex Problem Solving</h4>
+                                <p>Tackle multi-layered problems requiring advanced reasoning and analysis</p>
+                                
+                                <div class="level-meta disabled">
+                                    <span class="question-count"><i class="fas fa-question-circle"></i> 12 questions</span>
+                                    <span class="time-estimate"><i class="fas fa-clock"></i> 30 min</span>
+                                    <span class="points-available"><i class="fas fa-star"></i> +250 XP</span>
+                                </div>
+                                
+                                <div class="unlock-requirement challenger">
+                                    <div class="requirement-icon">⚡</div>
+                                    <div class="requirement-text">
+                                        <span>Complete "Advanced Applications" with 80%+ score</span>
+                                        <div class="requirement-progress">
+                                            <div class="req-bar challenger">
+                                                <div class="req-fill" style="width: 0%"></div>
+                                            </div>
+                                            <span>0/1 requirement</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="level-card challenger locked neo-glass">
+                            <div class="level-bg-effect locked"></div>
+                            <div class="level-status">🔒</div>
+                            <div class="level-difficulty challenger">Challenger</div>
+                            <div class="level-type">Analysis</div>
+                            
+                            <div class="level-content">
+                                <h4>Data Analysis & Synthesis</h4>
+                                <p>Analyze complex data sets and synthesize information from multiple sources</p>
+                                
+                                <div class="level-meta disabled">
+                                    <span class="question-count"><i class="fas fa-question-circle"></i> 18 questions</span>
+                                    <span class="time-estimate"><i class="fas fa-clock"></i> 35 min</span>
+                                    <span class="points-available"><i class="fas fa-star"></i> +300 XP</span>
+                                </div>
+                                
+                                <div class="unlock-requirement challenger">
+                                    <div class="requirement-icon">⚡</div>
+                                    <div class="requirement-text">
+                                        <span>Complete previous Challenger levels</span>
+                                        <div class="requirement-progress">
+                                            <div class="req-bar challenger">
+                                                <div class="req-fill" style="width: 0%"></div>
+                                            </div>
+                                            <span>0/2 requirements</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AI Generated Challenger Level -->
+                        <div class="level-card challenger ai-generated locked neo-glass">
+                            <div class="level-bg-effect ai challenger"></div>
+                            <div class="level-status">🔒</div>
+                            <div class="level-difficulty challenger">Challenger</div>
+                            <div class="ai-badge challenger">🤖 AI Expert</div>
+                            
+                            <div class="level-content">
+                                <h4>AI Advanced Analysis</h4>
+                                <p>AI-generated advanced questions with adaptive difficulty based on your performance</p>
+                                
+                                <div class="level-meta disabled">
+                                    <span class="question-count"><i class="fas fa-question-circle"></i> 20 questions</span>
+                                    <span class="time-estimate"><i class="fas fa-clock"></i> 40 min</span>
+                                    <span class="points-available"><i class="fas fa-star"></i> +400 XP</span>
+                                </div>
+                                
+                                <div class="ai-features">
+                                    <div class="ai-feature">
+                                        <i class="fas fa-brain"></i>
+                                        <span>Adaptive Difficulty</span>
+                                    </div>
+                                    <div class="ai-feature">
+                                        <i class="fas fa-chart-line"></i>
+                                        <span>Performance Analysis</span>
+                                    </div>
+                                    <div class="ai-feature">
+                                        <i class="fas fa-lightbulb"></i>
+                                        <span>Smart Hints</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="unlock-requirement challenger">
+                                    <div class="requirement-icon">🤖</div>
+                                    <div class="requirement-text">
+                                        <span>Achieve 90% average on all Challenger levels</span>
+                                        <div class="requirement-progress">
+                                            <div class="req-bar ai">
+                                                <div class="req-fill" style="width: 0%"></div>
+                                            </div>
+                                            <span>Expert level required</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Challenger Strategies -->
+                <section class="strategies-section">
+                    <div class="section-header">
+                        <h2 class="section-title">⚔️ Challenger Strategies</h2>
+                        <p class="section-subtitle">Master these techniques to conquer intermediate challenges</p>
+                    </div>
+                    
+                    <div class="strategies-grid">
+                        <div class="strategy-card neo-glass hover-lift" data-tilt>
+                            <div class="strategy-header">
+                                <div class="strategy-icon">🎯</div>
+                                <h4>Break Down Complex Problems</h4>
+                            </div>
+                            <div class="strategy-content">
+                                <p>Divide multi-step problems into smaller, manageable components. Solve each part systematically.</p>
+                                <div class="strategy-steps">
+                                    <div class="step">1. Identify key information</div>
+                                    <div class="step">2. Break into sub-problems</div>
+                                    <div class="step">3. Solve step by step</div>
+                                    <div class="step">4. Verify your solution</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="strategy-card neo-glass hover-lift" data-tilt>
+                            <div class="strategy-header">
+                                <div class="strategy-icon">🧠</div>
+                                <h4>Think Critically</h4>
+                            </div>
+                            <div class="strategy-content">
+                                <p>Question assumptions, evaluate evidence, and consider alternative perspectives before answering.</p>
+                                <div class="strategy-tips">
+                                    <div class="tip">💡 Ask "Why?" and "How do you know?"</div>
+                                    <div class="tip">💡 Look for patterns and connections</div>
+                                    <div class="tip">💡 Consider multiple viewpoints</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="strategy-card neo-glass hover-lift" data-tilt>
+                            <div class="strategy-header">
+                                <div class="strategy-icon">⚡</div>
+                                <h4>Time Management</h4>
+                            </div>
+                            <div class="strategy-content">
+                                <p>Allocate time wisely across questions. Don't get stuck on one problem for too long.</p>
+                                <div class="time-allocation">
+                                    <div class="time-segment">
+                                        <span class="time-label">Easy Questions</span>
+                                        <span class="time-value">1-2 min</span>
+                                    </div>
+                                    <div class="time-segment">
+                                        <span class="time-label">Medium Questions</span>
+                                        <span class="time-value">2-3 min</span>
+                                    </div>
+                                    <div class="time-segment">
+                                        <span class="time-label">Hard Questions</span>
+                                        <span class="time-value">3-5 min</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="strategy-card neo-glass hover-lift" data-tilt>
+                            <div class="strategy-header">
+                                <div class="strategy-icon">🔄</div>
+                                <h4>Learn from Mistakes</h4>
+                            </div>
+                            <div class="strategy-content">
+                                <p>Analyze incorrect answers thoroughly. Understanding why you were wrong is crucial for improvement.</p>
+                                <div class="mistake-analysis">
+                                    <div class="analysis-step">🔍 Review the explanation</div>
+                                    <div class="analysis-step">📝 Note the concept</div>
+                                    <div class="analysis-step">🔄 Practice similar problems</div>
+                                    <div class="analysis-step">✅ Test understanding</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Progress Tracking -->
+                <section class="progress-tracking">
+                    <div class="tracking-card neo-glass hover-lift">
+                        <div class="tracking-header">
+                            <h3>📊 Your Challenger Progress</h3>
+                            <div class="progress-stats">
+                                <div class="stat">
+                                    <span class="stat-value">0</span>
+                                    <span class="stat-label">Levels Completed</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value">--</span>
+                                    <span class="stat-label">Average Score</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value">--</span>
+                                    <span class="stat-label">Time Spent</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tracking-content">
+                            <div class="next-milestone">
+                                <div class="milestone-icon">🏆</div>
+                                <div class="milestone-text">
+                                    <h4>Next Milestone: First Challenger Victory</h4>
+                                    <p>Complete your first Challenger level to earn the "Rising Star" achievement</p>
+                                </div>
+                            </div>
+                            
+                            <div class="masters-preview">
+                                <div class="preview-header">
+                                    <i class="fas fa-crown"></i>
+                                    <span>Unlock Masters Arena</span>
+                                </div>
+                                <p>Complete all Challenger levels with 85%+ average to access the ultimate Masters Arena</p>
+                                <div class="masters-requirements">
+                                    <div class="requirement">✓ Complete Explorer (Done)</div>
+                                    <div class="requirement pending">○ Complete all Challenger levels</div>
+                                    <div class="requirement pending">○ Maintain 85%+ average</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="particles.js"></script>
+    <script src="physics.js"></script>
+    <script src="ai-processor.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
